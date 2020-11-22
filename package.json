@@ -1,0 +1,39 @@
+{
+  "name": "airlines-discount-service",
+  "version": "1.0.0",
+  "description": "A module that calculates discounts for users",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf lib &&  npm run remove-output && ./node_modules/.bin/babel src --out-dir lib",
+    "remove-output": "rm -rf sample-files/output && cd sample-files && mkdir output",
+    "lint": "./node_modules/.bin/eslint src",
+    "lint:fix": "./node_modules/.bin/eslint src --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smkarthiksm/airlines-discount-service.git"
+  },
+  "author": "Karthik SM <smkarthiksmk@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smkarthiksm/airlines-discount-service/issues"
+  },
+  "homepage": "https://github.com/smkarthiksm/airlines-discount-service#readme",
+  "dependencies": {
+    "csv-parser": "^2.3.3",
+    "csv-writer": "^1.6.0",
+    "csvtojson": "^2.0.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-async-to-generator": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
