@@ -1,5 +1,5 @@
 {
-  "name": "airlines-discount-service",
+  "name": "airlines-discount-calculator",
   "version": "1.0.0",
   "description": "A module that calculates discounts for users",
   "main": "lib/index.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smkarthiksm/airlines-discount-service.git"
+    "url": "git+https://github.com/smkarthiksm/airlines-discount-calculator.git"
   },
   "author": "Karthik SM <smkarthiksmk@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/smkarthiksm/airlines-discount-service/issues"
+    "url": "https://github.com/smkarthiksm/airlines-discount-calculator/issues"
   },
-  "homepage": "https://github.com/smkarthiksm/airlines-discount-service#readme",
+  "homepage": "https://github.com/smkarthiksm/airlines-discount-calculator#readme",
   "dependencies": {
     "csv-writer": "^1.6.0",
     "csvtojson": "^2.0.10"
