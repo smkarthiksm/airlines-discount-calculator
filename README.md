@@ -73,7 +73,7 @@ async function calculateDiscount(){
 ## Parameters
 transformData(fileConfig)
 
-#### fileConfig - 
+#### fileConfig
     {
         input: "customer-data-one.csv", //path for input file
         output: {
