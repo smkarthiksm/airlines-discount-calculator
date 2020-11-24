@@ -31,8 +31,8 @@ npm install flight-ticket-upgrader
 
 ## Usage
 
-```python
-import transformData from "flight-ticket-upgrader"
+```node
+import transformData from "airline-discount-calculator"
 
 // Using ES6 promises
 transformData({
@@ -42,7 +42,8 @@ transformData({
       invalidFilePath: "invalid-users-output.csv",
     },
   }).then((result) => {
-    // process data
+    console.log(result) // Output files created successfully. Please check output folder
+    // your logic
     ...
   }).then((result) => {
     // handle exception
@@ -52,13 +53,20 @@ transformData({
 -------
 // Using async/await
 async function calculateDiscount(){
-    await transformData({
-    input: "customer-data-one.csv",
-    output: {
-      validFilePath: "valid-users-output.csv",
-      invalidFilePath: "invalid-users-output.csv",
-    },
-  });
+    try {
+        const result = await transformData({
+            input: "customer-data-one.csv",
+            output: {
+              validFilePath: "valid-users-output.csv",
+              invalidFilePath: "invalid-users-output.csv",
+            },
+          });
+        console.log(result) // Output files created successfully. Please check output folder
+        // your logic
+    }
+    catch(err){
+        // handle exception
+    }
 }
 ```
 
