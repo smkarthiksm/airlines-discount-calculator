@@ -1,10 +1,12 @@
 import { expect } from "chai";
 import AddAdditionalFields from "../../../../src/conditions/add-additional-fields";
 import {
+  email,
   OFFER_THIRTY,
   OFFER_TWENTY,
   OFFER_TWENTY_FIVE,
 } from "../../../../src/constants";
+import ValidatorResult from "../../../../src/model/validator-result";
 
 let user;
 beforeEach("reset user", () => {
@@ -12,6 +14,7 @@ beforeEach("reset user", () => {
     firstName: "Abhishek",
     lastName: "Kumar",
     pnr: "ABC123",
+    fareClass: 'A',
     travelDate: "2019-07-31",
     pax: "2",
     ticketingDate: "2019-05-21",
@@ -105,6 +108,25 @@ describe("Add Offers", () => {
         bookedCabin: "Economy",
         discountCode: "",
       });
+    });
+  });
+
+  it("should add error reason to the user object", () => {
+    let validation = new ValidatorResult(false, email);
+    new AddAdditionalFields().addErrorReason(user, validation);
+
+    return expect(user).to.deep.equal({
+      firstName: "Abhishek",
+      lastName: "Kumar",
+      pnr: "ABC123",
+      fareClass: 'A',
+      travelDate: "2019-07-31",
+      pax: "2",
+      ticketingDate: "2019-05-21",
+      email: "abhishek@zzz.com",
+      mobilePhone: "9876543210",
+      bookedCabin: "Economy",
+      error: `Invalid ${validation.error}`,
     });
   });
 });
