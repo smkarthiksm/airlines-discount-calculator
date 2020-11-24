@@ -1,4 +1,4 @@
-# airline-discount-calculator
+# flight-ticket-upgrader
 
 This module is used to calculate offers for customers  and produce valid and invalid customer files in the specified output folder.
 
@@ -26,13 +26,13 @@ After the inputs are parsed and validation is done, then output files are create
 Use the package manager [npm](https://www.npmjs.com/package/npm) to install the module.
 
 ```bash
-npm install airline-discount-calculator
+npm install flight-ticket-upgrader
 ```
 
 ## Usage
 
 ```python
-import transformData from "airline-discount-calculator"
+import transformData from "flight-ticket-upgrader"
 
 // Using ES6 promises
 transformData({
