@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { bookedCabin, email, mobilePhone, pnr, ticketingDate } from '../../../src/constants';
-import ValidatorResult from '../../../src/model/validator-result';
-import Validator from '../../../src/validator';
+import { bookedCabin, email, mobilePhone, pnr, ticketingDate } from '../../../../src/constants';
+import ValidatorResult from '../../../../src/model/validator-result';
+import Validator from '../../../../src/conditions/validation';
 
 describe('Validator', () => {
     it('should return true when all fields are valid', () => {

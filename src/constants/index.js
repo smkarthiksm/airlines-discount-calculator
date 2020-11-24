@@ -8,6 +8,7 @@ export const ticketingDate = 'ticketingDate';
 export const email = 'email';
 export const mobilePhone = 'mobilePhone';
 export const bookedCabin = 'bookedCabin';
+export const discountCode = 'discountCode';
 export const error = 'error';
 
 export const FIRST_NAME = 'First_name';
@@ -20,4 +21,9 @@ export const TICKETING_DATE = 'Ticketing_date';
 export const EMAIL = 'Email';
 export const MOBILE_PHONE = 'Mobile_phone';
 export const BOOKED_CABIN = 'Booked_cabin';
+export const DISCOUNT_CODE = 'Discount_Code';
 export const ERROR = 'Error';
+
+export const OFFER_TWENTY = 'OFFER_20';
+export const OFFER_THIRTY = 'OFFER_30';
+export const OFFER_TWENTY_FIVE = 'OFFER_25';

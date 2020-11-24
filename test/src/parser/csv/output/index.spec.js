@@ -2,11 +2,12 @@ import { expect } from "chai";
 import { headerForValidFile } from "../../../../../src/constants/parser";
 import CSVOutputWriter from "../../../../../src/parser/csv/output";
 import fs from "fs";
+import { FILE_BASE_PATH } from "../../../../constants";
 
 describe("CSV Output Parser", () => {
   it("should create output file when valid input is given", () => {
     const csvOutputWriterObject = new CSVOutputWriter(
-      "/Users/karthiksm/Documents/github/airlines-discount-service/test/sample-files/output/csv-parser-output.csv",
+        `${FILE_BASE_PATH}/sample-files/output/csv-parser-output.csv`,
       {
         delimiter: ",",
       },
@@ -29,8 +30,7 @@ describe("CSV Output Parser", () => {
       ])
       .then(() => {
         expect(
-          fs.existsSync(
-            "/Users/karthiksm/Documents/github/airlines-discount-service/test/sample-files/output/csv-parser-output.csv"
+          fs.existsSync(`${FILE_BASE_PATH}/sample-files/output/csv-parser-output.csv`
           )
         ).to.equal(true);
       });

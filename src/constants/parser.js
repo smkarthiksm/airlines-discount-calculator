@@ -12,7 +12,10 @@ export const commonHeaders = [
     { id: constants.mobilePhone, title: constants.MOBILE_PHONE },
     { id: constants.bookedCabin, title: constants.BOOKED_CABIN },
   ];
-export const headerForValidFile = [...commonHeaders];
+export const headerForValidFile = [
+  ...commonHeaders,
+  { id: constants.discountCode, title: constants.DISCOUNT_CODE },
+];
 export const headerForInValidFile = [
     ...commonHeaders,
     { id: constants.error, title: constants.ERROR },

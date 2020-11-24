@@ -4,6 +4,7 @@ import { expect } from "chai";
 import { csv, headerForValidFile } from "../../../../../src/constants/parser";
 import CSVOutputWriter from "../../../../../src/parser/csv/output";
 import { ERROR_WRITING_OUTPUT } from "../../../../../src/constants/error";
+import { FILE_BASE_PATH } from "../../../../constants";
 
 describe("CSV Output Parser Error scenario", () => {
   before("stub dependency", () => {
@@ -16,7 +17,7 @@ describe("CSV Output Parser Error scenario", () => {
 
   it("should throw error when error occurs during writing output", () => {
     const csvOutputWriterObject = new CSVOutputWriter(
-      "/Users/karthiksm/Documents/github/airlines-discount-service/test/sample-files/output/csv-parser-output.csv",
+        `${FILE_BASE_PATH}/sample-files/output/csv-parser-output.csv`,
       {
         delimiter: ",",
       },

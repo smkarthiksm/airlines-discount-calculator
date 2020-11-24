@@ -1,11 +1,12 @@
 import ToUsers from "../transformer/to-users";
 import { inputParsers, outputParsers } from "../parser";
-import Validator from "../validator";
+import Validator from "../conditions/validation";
 import {
   NO_DATA_PRESENT,
   OUTPUT_FILES_CREATED_SUCCESSFULLY,
 } from "../constants/response";
 import { headerForInValidFile, headerForValidFile } from "../constants/parser";
+import AddAdditionalFields from "../conditions/add-additional-fields";
 
 export default class Processor {
   #validUsers;
@@ -51,15 +52,15 @@ export default class Processor {
 
   #validateUserData(users) {
     const validator = new Validator();
-
+    const addAdditionalFields = new AddAdditionalFields();
     users.forEach((user) => {
       const validation = validator.performValidation(user);
 
       if (validation.result) {
+        addAdditionalFields.addOfferBasedOnFareClass(user);
         this.#validUsers.push(user);
       } else {
-        // eslint-disable-next-line no-param-reassign
-        user.error = `Invalid ${validation.error}`;
+        addAdditionalFields.addErrorReason(user, validation);
         this.#invalidUsers.push(user);
       }
     });
@@ -80,7 +81,7 @@ export default class Processor {
         this.parserOtions,
         headerForInValidFile
       );
-      await parserForInvalidFile.writeToOutput(this.#validUsers);
+      await parserForInvalidFile.writeToOutput(this.#invalidUsers);
     }
 
     return OUTPUT_FILES_CREATED_SUCCESSFULLY;
