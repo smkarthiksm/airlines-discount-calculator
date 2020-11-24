@@ -8,7 +8,7 @@ export default class UserModel {
     pax,
     ticketingDate,
     email,
-    phoneNo,
+    mobilePhone,
     bookedCabin,
   ) {
     this.firstName = firstName;
@@ -19,7 +19,7 @@ export default class UserModel {
     this.pax = pax;
     this.ticketingDate = ticketingDate;
     this.email = email;
-    this.phoneNo = phoneNo;
+    this.mobilePhone = mobilePhone;
     this.bookedCabin = bookedCabin;
   }
 }

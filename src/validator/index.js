@@ -2,41 +2,42 @@ import * as constants from '../constants';
 import ValidatorResult from '../model/validator-result';
 
 export default class Validator {
+  #validatorsLookup;
   constructor() {
-    this.validatorsLookup = {};
-    this.setupValidators();
+    this.#validatorsLookup = {};
+    this.#setupValidators();
   }
 
-  setupValidators() {
-    this.validatorsLookup = {
-      [constants.email]: Validator.validateEmail,
-      [constants.phoneNo]: Validator.validatePhoneNo,
-      [constants.ticketingDate]: Validator.validateTicketingDate,
-      [constants.pnr]: Validator.validatePNR,
-      [constants.bookedCabin]: Validator.validateBookedCabin,
+  #setupValidators() {
+    this.#validatorsLookup = {
+      [constants.email]: this.#validateEmail,
+      [constants.mobilePhone]: this.#validatemobilePhone,
+      [constants.ticketingDate]: this.#validateTicketingDate,
+      [constants.pnr]: this.#validatePNR,
+      [constants.bookedCabin]: this.#validateBookedCabin,
     };
   }
 
-  static validateEmail({ email }) {
+  #validateEmail({ email }) {
     const regex = /\S+@\S+\.\S+/;
     return regex.test(email.toLowerCase());
   }
 
-  static validatePhoneNo({ phoneNo }) {
+  #validatemobilePhone({ mobilePhone }) {
     const regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    return regex.test(+phoneNo);
+    return regex.test(mobilePhone);
   }
 
-  static validateTicketingDate({ ticketingDate, travelDate }) {
+  #validateTicketingDate({ ticketingDate, travelDate }) {
     return new Date(ticketingDate) < new Date(travelDate);
   }
 
-  static validatePNR({ pnr }) {
-    const regex = /^[a-zA-Z0-9]{6}$/;
+  #validatePNR({ pnr }) {
+    const regex = /^(?=.*\d)(?=.*[a-zA-Z]).{6}$/;
     return regex.test(pnr);
   }
 
-  static validateBookedCabin({ bookedCabin }) {
+  #validateBookedCabin({ bookedCabin }) {
     const allowedCabins = [
       'Economy',
       'Premium',
@@ -48,9 +49,9 @@ export default class Validator {
   }
 
   performValidation(user) {
-    const keys = Object.keys(this.validatorsLookup);
+    const keys = Object.keys(this.#validatorsLookup);
     for (let i = 0; i < keys.length; i++) {
-      if (!this.validatorsLookup[keys[i]](user)) {
+      if (!this.#validatorsLookup[keys[i]](user)) {
         return new ValidatorResult(
           false,
           keys[i],
@@ -60,9 +61,5 @@ export default class Validator {
     return new ValidatorResult(
       true,
     );
-  }
-
-  static getAllowedCabins() {
-
   }
 }

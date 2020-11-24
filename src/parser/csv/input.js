@@ -1,4 +1,4 @@
-import csvToJSON from 'csvtojson';
+import csvtojson from 'csvtojson';
 import { ERROR_PARSING_INPUT } from '../../constants/error';
 import ExceptionHandler from '../../exception/exception-handler';
 
@@ -10,7 +10,7 @@ export default class CSVInputParser {
 
   async readFromInput() {
     try {
-      return await csvToJSON({
+      return await csvtojson({
         delimiter: this.options.delimiter,
       }).fromFile(this.filePath);
     } catch (err) {

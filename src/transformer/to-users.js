@@ -1,8 +1,9 @@
 import UserModel from '../model/user';
 
 export default class ToUsers {
+  #users;
   constructor() {
-    this.users = [];
+    this.#users = [];
   }
 
   createUsersFromData(data) {
@@ -15,11 +16,11 @@ export default class ToUsers {
       pax,
       ticketingDate,
       email,
-      phoneNo,
+      mobilePhone,
       bookedCabin,
     ] = Object.keys(data[0]);
     data.forEach((element) => {
-      this.users.push(
+      this.#users.push(
         new UserModel(
           element[firstName],
           element[lastName],
@@ -29,12 +30,12 @@ export default class ToUsers {
           element[pax],
           element[ticketingDate],
           element[email],
-          element[phoneNo],
+          element[mobilePhone],
           element[bookedCabin],
         ),
       );
     });
-
-    return this.users;
+    
+    return this.#users;
   }
 }

@@ -4,11 +4,13 @@
   "description": "A module that calculates discounts for users",
   "main": "lib/index.js",
   "scripts": {
-    "build": "rm -rf lib &&  npm run remove-output && ./node_modules/.bin/babel src --out-dir lib",
-    "remove-output": "rm -rf sample-files/output && cd sample-files && mkdir output",
+    "build": "rm -rf lib &&  npm run clean-output-files && ./node_modules/.bin/babel src --out-dir lib",
+    "clean-output-files": "rm -rf sample-files/output && cd sample-files && mkdir output",
+    "clean-test-output-files": "rm -rf test/sample-files/output && cd test/sample-files && mkdir output",
     "lint": "./node_modules/.bin/eslint src",
     "lint:fix": "./node_modules/.bin/eslint src --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run clean-test-output-files && ./node_modules/mocha/bin/mocha --config test/.mocharc.json test/src",
+    "test:coverage": "nyc ./node_modules/mocha/bin/mocha --config test/.mocharc.json test/src"
   },
   "repository": {
     "type": "git",
@@ -27,13 +29,19 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
+    "@babel/core": "^7.12.7",
     "@babel/plugin-transform-async-to-generator": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
+    "babel-eslint": "11.0.0-beta.2",
+    "chai": "^4.2.0",
     "eslint": "^7.14.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.1"
   }
 }
